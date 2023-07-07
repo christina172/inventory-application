@@ -8,6 +8,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const musicRouter = require("./routes/music"); //Import routes for "music" area of site
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use("/music", musicRouter); // Add music routes to middleware chain.
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
