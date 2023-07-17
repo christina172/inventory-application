@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+  h1 Item: #{item.full_name}
+
+  div #{item.description}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    p #[strong Category: ]
+        a(href=item.category.url) #{item.category.name}
+    
+    p #[strong Details:] #{item.details}
+
+    p #[strong Materials:] #{item.materials}
+
+    p #[strong Accessories:] #{item.accessories}
+
+    p #[strong Price:] #{item.price} $
+
+    p #[strong Number in stock:] #{item.number_in_stock}

@@ -18,13 +18,13 @@ const ItemSchema = new Schema({
 
 // Virtual for full name
 ItemSchema.virtual("full_name").get(function () {
-    return `${brand} ${model} ${name}`;
+    return `${this.brand} ${this.model} ${this.name}`;
 });
 
 // Virtual for item URL
 ItemSchema.virtual("url").get(function () {
     // We don't use an arrow function as we'll need the this object
-    return `/item/${this._id}`;
+    return `/music/item/${this._id}`;
 });
 
 // Export model

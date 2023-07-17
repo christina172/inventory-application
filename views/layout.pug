@@ -2,6 +2,30 @@ doctype html
 html
   head
     title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    nav.navbar.navbar-dark.bg-dark
+      div.container
+        a(href="/music" class="navbar-brand") Music Shop Inventory App
+        button(class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation")
+          span.navbar-toggler-icon
+        div(class="collapse navbar-collapse" id="nav")
+          ul.navbar-nav 
+            li.nav-item 
+              a(href="/music/categories" class="nav-link") All categories
+            li.nav-item 
+              a(href="/music/items" class="nav-link") All items 
+            li.nav-item 
+              a(href="/music/category/add" class="nav-link") Add category
+            li.nav-item 
+              a(href="/music/item/add" class="nav-link") Add item
+    main.container
+      block content
+    footer.text-center.bg-secondary
+      p.text-light Made by 
+        a(href="https://github.com/christina172" class="text-light") chistina172
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    

@@ -1,14 +1,34 @@
 const Item = require("../models/item");
+const Category = require("../models/category");
+
 const asyncHandler = require("express-async-handler");
 
 // Display list of all Items.
 exports.item_list = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Item list");
+    const allItems = await Item.find({}, "brand name model")
+        .sort({ brand: 1 })
+        .exec();
+
+    res.render("item_list", { title: "Item List", item_list: allItems });
 });
 
 // Display detail page for a specific Item.
 exports.item_detail = asyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: Item detail: ${req.params.id}`);
+    const item = await Item.findById(req.params.id)
+        .populate("category")
+        .exec();
+
+    if (item === null) {
+        // No results.
+        const err = new Error("Item not found");
+        err.status = 404;
+        return next(err);
+    }
+
+    res.render("item_detail", {
+        title: "Item Detail",
+        item: item,
+    });
 });
 
 // Display Item add form on GET.
