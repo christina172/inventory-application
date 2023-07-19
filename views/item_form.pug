@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name:
+      input#name.form-control(type='text', placeholder='Cello, 3/4 size' name='name' required='true' value=(undefined===item ? '' : item.name))
+    div.form-group
+      label(for='model') Model:
+      input#model.form-control(type='text', placeholder='VS5S' name='model' required='true' value=(undefined===item ? '' : item.model))
+    div.form-group
+      label(for='brand') Brand:
+      input#brand.form-control(type='text', placeholder='Yamaha' name='brand' required='true' value=(undefined===item ? '' : item.brand))
+    div.form-group
+      label(for='category') Category:
+      select#category.form-control(type='select' name='category' required='true' )
+        for category in categories
+          if item
+            option(value=category._id selected=(category._id.toString()===item.category._id.toString() ? 'selected' : false) ) #{category.name}
+          else
+            option(value=category._id) #{category.name}
+    div.form-group
+      label(for='description') Description:
+      textarea#description.form-control(type='textarea', placeholder='Create a rich tone right away with this quality cello, etc.' name='description' required='true') #{undefined===item ? '' : item.description}
+    div.form-group
+      label(for='details') Details:
+      textarea#details.form-control(type='textarea', placeholder='Body Type: Stradivarius. Bridge: Yamaha Original, etc.' name='details' required='true') #{undefined===item ? '' : item.details}
+    div.form-group
+      label(for='materials') Materials and Finish:
+      textarea#materials.form-control(type='textarea', placeholder='Top: Spruce. Back, sides and neck: Maple, etc.' name='materials' required='true') #{undefined===item ? '' : item.materials}
+    div.form-group
+      label(for='accessories') Accessories:
+      textarea#accessories.form-control(type='textarea', placeholder='Includes a soft case, bow, Prelude strings, and rosin, etc.' name='accessories' required='true') #{undefined===item ? '' : item.accessories}
+    div.form-group
+      label(for='price') Price ($):
+      input#price.form-control(type='number' name='price' min="1" max="100000" required='true' value=(undefined===item ? '100' : item.price))
+    div.form-group
+      label(for='number_in_stock') Number in stock:
+      input#number_in_stock.form-control(type='number' name='number_in_stock' min="0" required='true' value=(undefined===item ? '1' : item.number_in_stock))
+    button.btn.btn-primary(type='submit') Submit
+    
+
+  if errors
+   ul.errors-list
+    for error in errors
+     li!= error.msg

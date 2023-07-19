@@ -15,11 +15,15 @@ main {
 }
 
 footer {
-  /* background-color: lavender; */
   padding: 3px;
 }
 
 footer p {
   margin: 0;
-  /* text-align: center; */
+}
+
+.form-group,
+.errors-list {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }

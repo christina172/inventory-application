@@ -13,10 +13,16 @@ block content
     
     p #[strong Details:] #{item.details}
 
-    p #[strong Materials:] #{item.materials}
+    p #[strong Materials and finish:] #{item.materials}
 
     p #[strong Accessories:] #{item.accessories}
 
     p #[strong Price:] #{item.price} $
 
     p #[strong Number in stock:] #{item.number_in_stock}
+  
+  hr
+  p
+    a(href=item.url+'/delete') Delete item
+  p
+    a(href=item.url+'/update') Update item
